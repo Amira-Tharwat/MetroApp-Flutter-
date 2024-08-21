@@ -152,11 +152,11 @@ class _SekaScreenState extends State<SekaScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,color: Colors.black),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search,color: Colors.black),
             label: 'Search',
           ),
           BottomNavigationBarItem(
