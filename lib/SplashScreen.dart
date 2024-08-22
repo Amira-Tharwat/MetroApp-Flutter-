@@ -406,6 +406,7 @@ class SignUpScreen extends State<SignUpPage> {
         child: Icon(Icons.arrow_forward),
       ),
     );
+    //this
   }
   Widget togglePssword(){
     return IconButton(onPressed: (){
