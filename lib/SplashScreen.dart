@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
+
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
@@ -170,7 +173,7 @@ class HomeScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SignUpScreen()),
+                            MaterialPageRoute(builder: (context) => SignUpPage()),
                           );
                         },
                         child: Text('انشاء حساب'),
@@ -196,17 +199,230 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+class SignUpPage extends StatefulWidget{
+  SignUpScreen createState() => SignUpScreen();
+}
 // Dummy SignUpScreen
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends State<SignUpPage> {
+  bool _isSecurePass=true;
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Sign Up')),
       body: Center(
-        child: Text('Sign Up Page'),
+         child: SingleChildScrollView(
+           child: Container(
+             width: double.infinity, // Ensure full width
+             decoration: BoxDecoration(
+               gradient: LinearGradient(
+                 begin: Alignment.topLeft,
+                 end: Alignment.bottomRight,
+                 colors: [
+                   Color(0xFF00A4E4),
+                   Color(0xFFFFFFFF),
+                 ],
+               ),
+             ),
+             child: Column(
+
+               children: [
+                 SafeArea(child:
+                 Form(
+                   key: formKey,
+                   child:
+
+                   Padding(
+                     padding: const EdgeInsets.all(0),
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.end,
+                       children: [
+                         Padding(
+                           padding: const EdgeInsets.only(top: 40, right: 20.0),
+                           child: Text(
+                             'اهلا بيك في عالسكه',
+                             style: TextStyle(
+                               fontSize: 16,
+                               fontWeight: FontWeight.bold,
+                               color: Colors.black,
+                             ),
+                             textAlign: TextAlign.right,
+                           ),
+                         ),
+                         Padding(
+                           padding: const EdgeInsets.only(top: 90, right: 20.0),
+                           child: Text(
+                             'انشاء حساب',
+                             style: TextStyle(
+                               fontSize: 16,
+                               fontWeight: FontWeight.bold,
+                               color: Colors.black,
+                             ),
+                             textAlign: TextAlign.right,
+                           ),
+                         ),
+                         Padding(padding:  const EdgeInsets.all(16),
+                         child: Column(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             SizedBox(height: 20),
+                             TextFormField(
+                               validator: (value) {
+                                 if (value!.isEmpty) {
+                                   return 'ادخل الاسم';
+                                 }
+                                 return null;
+                               },
+                               decoration: InputDecoration(
+                                 border: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(20),
+                                 ),
+                                 labelText: "اسم المستخدم",
+                                 prefixIcon: const Icon(Icons.person, color: Colors.black),
+                                 labelStyle: const TextStyle(color: Colors.black),
+                                 fillColor: Colors.white.withOpacity(0.2),
+                               ),
+                               style: TextStyle(color: Colors.black),
+                             ),
+                             SizedBox(height: 16),
+                             TextFormField(
+                               validator: (value) {
+                                 if (value!.isEmpty) {
+                                   return 'ادخل البريد الالكتروني';
+                                 }
+                                 return null;
+                               },
+                               decoration: InputDecoration(
+                                 border: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(20),
+                                 ),
+                                 labelText: "البريد الالكتروني",
+                                 prefixIcon:  Icon(Icons.email, color: Colors.black),
+                                 labelStyle:  TextStyle(color: Colors.black),
+                                 fillColor: Colors.white.withOpacity(0.2),
+                               ),
+                               style: TextStyle(color: Colors.black),
+                             ),
+                             SizedBox(height: 16),
+                             TextFormField(
+                               obscureText: _isSecurePass,
+
+                               validator: (value) {
+                                 if (value!.isEmpty) {
+                                   return 'ادخل كلمة السر';
+                                 }
+                                 return null;
+                               },
+                               decoration: InputDecoration(
+                                 border: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(20),
+                                 ),
+                                 labelText: "كلمة السر",
+                                 prefixIcon: const Icon(Icons.password, color: Colors.black),
+                                 labelStyle: const TextStyle(color: Colors.black),
+                                 fillColor: Colors.white.withOpacity(0.2),
+                                 suffixIcon: togglePssword(),
+                               ),
+                               style: TextStyle(color: Colors.black),
+                             ),
+                             SizedBox(height: 16),
+                             TextFormField(
+                               obscureText: _isSecurePass,
+                               validator: (value) {
+                                 if (value!.isEmpty) {
+                                   return 'ادخل كلمة السر';
+                                 }
+                                 return null;
+                               },
+                               decoration: InputDecoration(
+                                 border: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(20),
+                                 ),
+                                 labelText: "كلمة السر",
+                                 prefixIcon: const Icon(Icons.password, color: Colors.black),
+                                 labelStyle: const TextStyle(color: Colors.black),
+                                 fillColor: Colors.white.withOpacity(0.2),
+                                 suffixIcon: togglePssword(),
+                               ),
+                               style: TextStyle(color: Colors.black),
+
+                             ),
+                             SizedBox(height: 20,),
+                           ],
+                         ),
+                         ),
+                         Padding(
+                           padding: const EdgeInsets.only(bottom: 100, right: 16.0), // Align to the right with some padding
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.end, // Align to the right
+                             children: [
+                               Text(
+                                 ' لديك حساب بالفعل؟',
+                                 style: TextStyle(
+                                   fontSize: 16,
+                                   fontWeight: FontWeight.bold,
+                                   color: Colors.black,
+                                 ),
+                                 textAlign: TextAlign.right,
+                               ),
+                               SizedBox(height: 8),
+                               ElevatedButton(
+                                 onPressed: () {
+                                   Navigator.push(
+                                     context,
+                                     MaterialPageRoute(builder: (context) => HomeScreen()),
+                                   );
+                                 },
+                                 child: Text('تسجيل دخول'),
+                               ),
+                             ],
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                 )
+                 )
+               ],
+             ),
+           )
+
+         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SekaScreen()),
+            );
+          }
+
+
+
+        },
+        child: Icon(Icons.arrow_forward),
       ),
     );
   }
+  Widget togglePssword(){
+    return IconButton(onPressed: (){
+      setState(() {
+        _isSecurePass=!_isSecurePass;
+      });
+
+
+
+
+    }, icon: _isSecurePass? Icon(Icons.visibility) : Icon(Icons.visibility_off),
+    color: Colors.grey,
+    );
+
+  }
+
+
 }
 
 class SekaScreen extends StatefulWidget {
