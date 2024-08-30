@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "666415558139",
+    "project_id": "seka-ee43b",
+    "storage_bucket": "seka-ee43b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666415558139:android:ef4f10d4362b63e613af5e",
+        "android_client_info": {
+          "package_name": "com.example.sekaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIIeWnXuBthiXRgW_EFC2pBIMlS4rM1Bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
